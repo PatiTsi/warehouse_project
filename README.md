@@ -20,4 +20,7 @@ For more details, check out the [author's GitHub profile](https://github.com/geo
 ## License
 
 This project is licensed under the [MIT License](LICENSE.txt).
+You can find the full license text [here](LICENSE.txt).
+
+
 
