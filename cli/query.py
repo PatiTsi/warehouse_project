@@ -7,9 +7,11 @@ for item in warehouse1:
     # The `item` name will contain each of the strings (item names) in the list.
 """
 
-from data import warehouse1, warehouse2
+#from data import warehouse1, warehouse2
+from data import stock
 
 # Function to list items by warehouse
+'''
 def list_items():
     print("Items in Warehouse 1:")
     for item in warehouse1:
@@ -17,14 +19,44 @@ def list_items():
     print("Items in Warehouse 2:")
     for item in warehouse2:
         print(f"- {item}")
+        '''
+
+# Function to list all items and count by warehouse
+def list_all_items():
+    total_warehouse1 = 0
+    total_warehouse2 = 0
+
+    for item in stock:
+        print(f"{item['state']} {item['category']} (Warehouse {item['warehouse']}, {item['date_of_stock']})")
+        if item['warehouse'] == 1:
+            total_warehouse1 += 1
+        elif item['warehouse'] == 2:
+            total_warehouse2 += 1
+
+    print(f"Total items in Warehouse 1: {total_warehouse1}")
+    print(f"Total items in Warehouse 2: {total_warehouse2}")
+
+
+ # Function to search for items by category (new feature)
+def browse_by_category():
+    category = input("Enter a category to browse: ")
+    found_items = [item for item in stock if category.lower() in item['category'].lower()]
+
+    if found_items:
+        for item in found_items:
+            days_in_stock = (datetime.now() - item['date_of_stock']).days
+            print(f"{item['state']} {item['category']} (Warehouse {item['warehouse']}), Days in stock: {days_in_stock}")
+    else:
+        print(f"No items found in the category: {category}")   
+
 
 # Function to search for an item and place an order
 def search_and_order():
     item_name = input("Enter the item name you want to search for: ")
 
     # Search in both warehouses
-    found_in_warehouse1 = item_name in warehouse1
-    found_in_warehouse2 = item_name in warehouse2
+    found_in_warehouse1 = item_name in stock
+    found_in_warehouse2 = item_name in stock
 
     total_available = found_in_warehouse1 + found_in_warehouse2
 
@@ -45,7 +77,7 @@ def search_and_order():
 
     # Check which warehouse has more of the item
     if found_in_warehouse1 and found_in_warehouse2:
-        if warehouse1.count(item_name) > warehouse2.count(item_name):
+        if found_in_warehouse1.count(item_name) > found_in_warehouse2.count(item_name):
             print("Warehouse 1 has more.")
         else:
             print("Warehouse 2 has more.")
@@ -71,12 +103,13 @@ while True:
     print("\nMenu:")                                         # Show the menu and ask to pick a choice
     print("1. List items by warehouse")
     print("2. Search an item and place an order")
-    print("3. Quit")
+    print("3. Browse items by category")
+    print("4. Quit")
 
     choice = input("Please pick a choice using the numeric values (1/2/3): ")
 
     if choice == "1":                                               # If they pick 1
-        list_items()
+        list_all_items()
         break
     elif choice == "2":                                              # Else, if they pick 2
         search_and_order()
