@@ -1,7 +1,16 @@
 # My warehouse_project
-warehouse-managment 
+Re_conNect
 
-Welcome to my Warehouse Project repository! This project is a management system with the following features:
+## Description
+
+ The Re_conNect project is a *Warehouse Management System* is a software application designed to support and optimize warehouse functionality and distribution center management.
+IT is built with Python, and that provides a clean interface to basic management operations with multiple warehouses and users.
+
+
+## Development Status
+
+The repository is currently in its first stages of development.
+
 
 ## Features
 
@@ -11,11 +20,27 @@ Welcome to my Warehouse Project repository! This project is a management system 
 - Log actions from users.
 - Reporting.
 
+
+## Author
+
 For more details, check out the [author's GitHub profile](https://github.com/george-krg) or visit the [Python Course homepage](https://digitalcareerinstitute.org/courses/python-backend-programming/).
+
+## Collaboration
+
+If you want to collaborate, please send a pull request with your proposed changes.
 
 ## Planned Features
 
-- [Add your planned features here]
+- comming soon
+
+## Development environment
+
+The repository should be cloned and then a virtual environment should be used to install all WarePy's dependencies.
+
+Run `pip install -r requirements.txt` to install them once you have the virtual environment set up and activated.
+
+It is recommended to use Visual Studio Code as the IDE.
+
 
 ## License
 
