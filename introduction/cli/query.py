@@ -80,7 +80,6 @@ def search_and_order():
                 print(f"Order placed: {total_available} {item_name}")
 
 
-2
 # Get the user name
 user_name = input("Please enter your username: ")
 # Greet the user
