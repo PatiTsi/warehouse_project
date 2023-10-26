@@ -1,17 +1,34 @@
+"""Command line interface to query the stock.
+
+To iterate the source data you can use the following structure:
+
+for item in warehouse1:
+    # Your instraction here.
+    # The 'item' name will contain each of the strings(iten names) in the list.
+    """
+
 from data import warehouse1, warehouse2
 
 
-# Function to list items by warehouse
+# If they pick the 1 choice: list items by warehouse
+#
 def list_items():
+    print("*" * 25)
     print("Items in Warehouse 1:")
+    print("*" * 25)
+
     for item in warehouse1:
         print(f"- {item}")
-    print("\nItems in Warehouse 2:")
+
+    print("*" * 25)
+    print("Items in Warehouse 2:")
+    print("*" * 25)
+
     for item in warehouse2:
         print(f"- {item}")
 
 
-# Function to search for an item and place an order
+# If they pick the 2 choice: search for an item and place an order
 def search_and_order():
     item_name = input("Enter the item name you want to search for: ")
 
@@ -25,7 +42,7 @@ def search_and_order():
         print(f"{item_name} is Not in stock.")
         return
 
-    print(f"Total available: {total_available} item(s)")
+    print(f"Total availability of the item: {item_name} is {total_available} item(s)")
 
     # Determine the location of the item
     location = []
@@ -36,15 +53,15 @@ def search_and_order():
 
     print("Location:", ", ".join(location))
 
-    # Check which warehouse has more of the item
+    # Check which warehouse has more of the items
     if found_in_warehouse1 and found_in_warehouse2:
         if warehouse1.count(item_name) > warehouse2.count(item_name):
-            print("Warehouse 1 has more.")
+            print("Maximum quantity Location Warehouse 1")
         else:
-            print("Warehouse 2 has more.")
+            print("Maximum quantity Location Warehouse 2")
 
     order_choice = input(
-        "Do you want to place an order for this item? (yes/no): "
+        f"Do you want to place an order for the item {item_name} ? (yes/no): "
     ).lower()
 
     if order_choice == "yes":
@@ -53,19 +70,25 @@ def search_and_order():
             print(f"Order placed: {desired_amount} {item_name}")
         else:
             max_available = min(found_in_warehouse1, found_in_warehouse2)
+            print("*" * 100)
             print(
-                f"Error: Only {max_available} {item_name} available. Do you want to order {max_available} instead? (yes/no)"
+                f"Error: Only {total_available} {item_name} available. Do you want to order {total_available} instead? (yes/no)"
             )
+            print("*" * 100)
+
             if input().lower() == "yes":
-                print(f"Order placed: {max_available} {item_name}")
+                print(f"Order placed: {total_available} {item_name}")
 
 
-# Main program
-user_name = input("Please enter your name: ")
-print(f"Hello, {user_name}!")
+2
+# Get the user name
+user_name = input("Please enter your username: ")
+# Greet the user
+print(f"Hello, {user_name}! Welcome to our wedsite.")
 
+# Show the menu and ask to pick a choice
 while True:
-    print("\nMenu:")
+    print("Menu:")
     print("1. List items by warehouse")
     print("2. Search an item and place an order")
     print("3. Quit")
