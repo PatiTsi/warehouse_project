@@ -1,9 +1,9 @@
 """Command line interface to query the stock."""
 
 from data import stock
+from datetime import datetime
 
-
-# Function to list all items and count by warehouse
+# If they pick 1, list all items and count by warehouse
 
 
 def list_all_items():
@@ -23,11 +23,10 @@ def list_all_items():
     print(f"Total items in Warehouse 2: {total_warehouse2}")
 
 
-# Function to search for an item and place an order
+# If they pic 2, search for an item and place an order
 def search_and_order():
     item_name = input("Enter the item name you want to search for: ").lower()
 
-    # Search in both warehouses
     found_in_warehouse1 = [
         item
         for item in stock
@@ -49,8 +48,11 @@ def search_and_order():
 
     # Determine the location of the item
     location = []
+    date_str = item["date_of_stock"]
+    date_format = "%Y-%m-%d %H:%M:%S"
+    days = (datetime.now() - datetime.strptime(date_str, date_format)).days
     for item in found_in_warehouse1:
-        location.append(f"Warehouse 1 (in stock for {item['date_of_stock']} days)")
+        location.append(f"Warehouse 1 (in stock for {item},{days} days)")
     for item in found_in_warehouse2:
         location.append(f"Warehouse 2 (in stock for {item['date_of_stock']} days)")
 
