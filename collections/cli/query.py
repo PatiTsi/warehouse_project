@@ -52,9 +52,9 @@ def search_and_order():
     date_format = "%Y-%m-%d %H:%M:%S"
     days = (datetime.now() - datetime.strptime(date_str, date_format)).days
     for item in found_in_warehouse1:
-        location.append(f"Warehouse 1 (in stock for {item},{days} days)")
+        location.append(f"Warehouse 1 (in stock for {item}, {days} days)")
     for item in found_in_warehouse2:
-        location.append(f"Warehouse 2 (in stock for {item['date_of_stock']} days)")
+        location.append(f"Warehouse 2 (in stock for {item}, {days} days)")
 
     # print("Location:", ", ".join(location))
     print("Location:")
