@@ -14,6 +14,7 @@ def list_all_items():
         print(
             f"{item['state']} {item['category']} (Warehouse {item['warehouse']}, {item['date_of_stock']} days)"
         )
+
         if item["warehouse"] == 1:
             total_warehouse1 += 1
         elif item["warehouse"] == 2:
@@ -32,6 +33,7 @@ def search_and_order():
         for item in stock
         if item_name in f"{item['state']} {item['category']}" and item["warehouse"] == 1
     ]
+
     found_in_warehouse2 = [
         item
         for item in stock
@@ -56,10 +58,10 @@ def search_and_order():
     for item in found_in_warehouse2:
         location.append(f"Warehouse 2 (in stock for {item}, {days} days)")
 
-    # print("Location:", ", ".join(location))
-    print("Location:")
-    for loc in location:
-        print(f"- {loc}")
+    print("Location:", ", ".join(location))
+    # print("Location:")
+    # for loc in location:
+    # print(f"- {loc}")
 
     # Check which warehouse has more of the item
     if found_in_warehouse1 and found_in_warehouse2:
@@ -85,27 +87,27 @@ def search_and_order():
                 print(f"Order placed: {max_available} {item_name}")
 
 
-user_name = input("Please enter your name: ")  # Get the user name
-print(f"Hello, {user_name}!")  # Greet the user
+# Get the user name
+user_name = input("Please enter your username: ")
+# Greet the user
+print(f"Hello, {user_name}! Welcome to our wedsite.")
 
+# Show the menu and ask to pick a choice
 while True:
-    print("\nMenu:")  # Show the menu and ask to pick a choice
+    print("Menu:")
     print("1. List items by warehouse")
     print("2. Search an item and place an order")
     print("3. Quit")
 
     choice = input("Please pick a choice using the numeric values (1/2/3): ")
 
-    if choice == "1":  # If they pick 1
-        list_all_items()
-        print(f"Thank you for visiting, {user_name}!")
+    if choice == "1":
+        list_items()
         break
-    elif choice == "2":  # Else, if they pick 2
+    elif choice == "2":
         search_and_order()
     elif choice == "3":
-        print(f"Thank you for visiting, {user_name}!")  # Else, if they pick 3
+        print(f"Thank you for visiting, {user_name}!")
         break
     else:
-        print(
-            "Error: Invalid operation. Please select 1, 2, or 3."
-        )  # Thank the user for the visit
+        print("Error: Invalid operation. Please select 1, 2, or 3.")
