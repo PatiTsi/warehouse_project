@@ -17,16 +17,23 @@ def list_all_items():
 
         if item["warehouse"] == 1:
             total_warehouse1 += 1
+
         elif item["warehouse"] == 2:
             total_warehouse2 += 1
-
-    print(f"Total items in Warehouse 1: {total_warehouse1}")
-    print(f"Total items in Warehouse 2: {total_warehouse2}")
+    print("*" * 40)
+    print(f"Total items in Warehouse 1 is {total_warehouse1}")
+    print("*" * 40)
+    print(f"Total items in Warehouse 2 is {total_warehouse2}")
+    print("*" * 40)
 
 
 # If they pic 2, search for an item and place an order
 def search_and_order():
     item_name = input("Enter the item name you want to search for: ").lower()
+    search_item_state = " ".join(item_name.split("")[:-1]).capitalize()
+    print("state : ", search_item_state)
+    serch_item_category = item_name.split()[-1].capitalize()
+    print("category: ", serch_item_category)
 
     found_in_warehouse1 = [
         item
@@ -102,7 +109,7 @@ while True:
     choice = input("Please pick a choice using the numeric values (1/2/3): ")
 
     if choice == "1":
-        list_items()
+        list_all_items()
         break
     elif choice == "2":
         search_and_order()
