@@ -31,7 +31,11 @@ If you want to collaborate, please send a pull request with your proposed change
 
 ## Planned Features
 
-- comming soon
+- Unlimited warehouses
+- Extended sessions
+- User system
+    
+
 
 ## Development environment
 
